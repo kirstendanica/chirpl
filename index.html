@@ -1,31 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styles/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300;0,400;1,300&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles/styles.css" />
     <title>chirpl</title>
-</head>
-<body>
+  </head>
+  <body>
+    
     <header>
-        <h1>chirpl</h1>
+      <h1>chirpl</h1>
     </header>
-    <div class="container">
-        <div class="input-section">
-            <input type="text" id="task-input" placeholder="Enter task name">
-            <input type="number" id="duration-input" placeholder="Duration (min)">
-            <button id="start-button">Add task</button>
-        </div>
-        <div id="task-list"></div>
-        <div>
-            <button id="mode-toggle">Toggle light / dark mode</button>
-        </div>
-    </div>
-    <div class="container">
-        <div id="timer-display"></div>
-    </div>
-    <audio id="timer-complete-audio" src="assets/audio/a-bird-chirping-74574.mp3"></audio>
 
+    <main>
+      <!---- Timer ----->
+      <section id="timer">
+        <div class="container">
+          <div class="input-section">
+            <input type="text" id="task-input" />
+            <input type="number" id="duration-input" />
+            <button id="start-button">Add task</button>
+          </div>
+          <div id="task-list"></div>
+          <div>
+            <button id="mode-toggle">☾ | ☼</button>
+          </div>
+        </div>
+        <div class="container">
+          <div id="timer-display"></div>
+        </div>
+        <audio
+          id="timer-complete-audio"
+          src="assets/audio/a-bird-chirping-74574.mp3"></audio>
+      </section>
+
+      <!---- Mascot ----->
+      <section id="mascot-dropdown">
+        <div class="mascot-preview">
+          <div class="selected-mascot-name"></div>
+        </div>
+        <button id="toggle-mascot-gallery">Change Mascot</button>
+        <div class="mascot-gallery"></div>
+      </section>
+    </main>
     <script src="assets/scripts/script.js" defer></script>
-</body>
+  </body>
 </html>
