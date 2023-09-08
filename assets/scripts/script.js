@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
       timerInterval = setInterval(() => {
         // Check if time remaining is 0
         if (remainingTime <= 0) {
-            // Stop timer display
+          // Stop timer display
           clearInterval(timerInterval);
           timerElement.textContent = "Chiirrrpp! (Complete)";
           startButton.disabled = false;
@@ -190,23 +190,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Close mascot gallery upon selection with "Done!" button 
+  const doneButton = document.createElement("button");
+  doneButton.textContent = "Done!";
+  doneButton.id = "done-btn";
+  doneButton.style.display = "block";
+  doneButton.style.margin = "10px auto";
+  mascotGallery.appendChild(doneButton);
+
+  doneButton.addEventListener("click", closeMascotGallery);
+
+
   // Function for updating - changing mascot
   function updateSelectedMascot(index) {
     const selectedMascot = mascots[index];
     const selectedMascotImage = mascotImages[index];
     mascotPreview.style.backgroundImage = `url(${selectedMascotImage})`;
     mascotPreview.textContent = selectedMascot;
-  
+
     const selectedMascotName = document.querySelector(".selected-mascot-name");
     selectedMascotName.textContent = selectedMascot;
-  
+
     if (selectedMascot) {
       selectedMascotName.style.display = "block"; // Show the selected mascot name
     } else {
       selectedMascotName.style.display = "none"; // Hide the selected mascot name
     }
   }
-  
+
   mascotImages.forEach((imageSrc, index) => {
     const img = new Image();
     img.src = imageSrc;
@@ -215,35 +226,36 @@ document.addEventListener("DOMContentLoaded", () => {
       setMascot(index);
       closeMascotGallery();
     });
-  
+
+
     const mascotName = document.createElement("div");
     mascotName.classList.add("mascot-name");
     mascotName.textContent = mascots[index];
-  
+
     const mascotContainer = document.createElement("div");
     mascotContainer.classList.add("mascot-container");
     mascotContainer.appendChild(img);
     mascotContainer.appendChild(mascotName);
-  
+
     mascotGallery.appendChild(mascotContainer);
   });
-  
+
   // Set default mascot
   setMascot(selectedMascotIndex);
-  
+
   function setMascot(index) {
     const selectedMascot = mascots[index];
     const selectedMascotImage = mascotImages[index];
-  
+
     mascotPreview.style.backgroundImage = `url(${selectedMascotImage})`;
     highlightSelectedMascot(index);
   }
-  
+
   mascotPreview.parentNode.insertBefore(
     mascotGallery,
     mascotPreview.nextSibling
   );
-  
+
   mascotPreview.addEventListener("click", () => {
     if (mascotGallery.style.display === "none") {
       openMascotGallery();
@@ -251,4 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
       closeMascotGallery();
     }
   });
+
+
+  doneButton.addEventListener("click", closeMascotGallery);
 });
